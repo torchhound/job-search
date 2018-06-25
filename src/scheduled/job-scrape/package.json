@@ -1,0 +1,9 @@
+{
+  "name": "job-search-job-scrape",
+  "dependencies": {
+    "@architect/data": "^2.0.2",
+    "@architect/functions": "^1.8.10",
+    "aws-sdk": "^2.263.1",
+    "indeed-scraper": "^2.0.2"
+  }
+}
