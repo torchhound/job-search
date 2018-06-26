@@ -39,7 +39,7 @@ function handler(event, callback) {
     </html>
   `
 
-  s3.client.putObject({
+  s3.putObject({
     Bucket: 'production-job-search-html',
     Key: 'index.html',
     Body: html,
