@@ -32,19 +32,15 @@ function handler(event, callback) {
   })
 
   function uploadHtml() {
+      const currentTime = new Date()
       var html = `<!doctype html>
 <html>
   <head>
     <title>Serverless Job Search</title>
   </head>
   <body>
+    <p>Last Updated: ${currentTime.toTimeString()}</p>
     ${jobLinks}
-    <script src="//cdn.jsdelivr.net/npm/microlinkjs@latest/umd/microlink.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function (event) {
-        microlink('a')
-      })
-    </script>
   </body>
 </html>
 `
