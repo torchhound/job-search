@@ -36,13 +36,15 @@ function handler(event, callback) {
 <html>
   <head>
     <title>Serverless Job Search</title>
-    <script src="//cdn.jsdelivr.net/npm/microlinkjs@latest/umd/microlink.min.js"></script>
   </head>
-  <script>
-    microlink('a')
-  </script>
   <body>
-  ${jobLinks}
+    ${jobLinks}
+    <script src="//cdn.jsdelivr.net/npm/microlinkjs@latest/umd/microlink.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function (event) {
+        microlink('a')
+      })
+    </script>
   </body>
 </html>
 `
