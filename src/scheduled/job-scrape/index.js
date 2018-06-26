@@ -3,7 +3,6 @@ let indeed = require('indeed-scraper')
 let AWS = require('aws-sdk')
 
 function handler(event, callback) {
-  AWS.config.update({region: 'us-east-2'})
   let s3 = new AWS.S3()
 
   const queryOptions = {

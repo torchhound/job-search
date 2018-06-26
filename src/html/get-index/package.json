@@ -2,6 +2,7 @@
   "name": "job-search-get-index",
   "dependencies": {
     "@architect/data": "^2.0.2",
-    "@architect/functions": "^1.8.10"
+    "@architect/functions": "^1.8.10",
+    "aws-sdk": "^2.263.1"
   }
 }
