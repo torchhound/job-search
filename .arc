@@ -9,4 +9,5 @@ production production-job-search-html
 get /
 
 @scheduled
-job-scrape rate(12 hours)
+job-scrape rate(11 hours)
+email-html rate(12 hours)

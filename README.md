@@ -22,6 +22,10 @@ Run this to deploy `.arc-config` to your Lambdas: `npx config`
 
 `export ARC_DEPLOY=production`
 
+`npx env production EMAIL example@gmail.com`
+
+`npx env production PASSWORD example`
+
 Run this to update and install all the `node_modules` in `src/`: `npx hydrate`
 
 `npx deploy`
