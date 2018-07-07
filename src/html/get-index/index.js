@@ -3,13 +3,13 @@ let AWS = require('aws-sdk')
 
 function route(req, res) {
   let s3 = new AWS.S3()
-  var bucket
+  let bucket
   if (process.env.NODE_ENV === 'production') {
     bucket = 'production-job-search-html'
   } else if (process.env.NODE_ENV === 'staging') {
     bucket = 'staging-job-search-html'
   }
-  var getParams = {
+  let getParams = {
     Bucket: bucket,
     Key: 'index.html'
   }

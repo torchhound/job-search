@@ -13,8 +13,8 @@ function handler(event, callback) {
     limit: '1000'
   };
 
-  var jobLinks = ""
-  var lengthCheck = 0
+  let jobLinks = ""
+  let lengthCheck = 0
 
   indeed.query(queryOptions).then(res => {
     if (res === undefined || res.length == 0) {
@@ -22,7 +22,7 @@ function handler(event, callback) {
     } else {
       res.forEach(function(job) {
         lengthCheck++
-        jobLinks += `<a href=${job.url}>${job.title}</a>\n<br/>`
+        jobLinks += `<div class="alert alert-primary show"><a href=${job.url}>${job.title}</a><p>${job.company} | ${job.location}</p></div>\n`
         if (lengthCheck === res.length) {
           uploadHtml()
         }
@@ -32,14 +32,18 @@ function handler(event, callback) {
 
   function uploadHtml() {
       const currentTime = new Date()
-      var html = `<!doctype html>
+      let html = `<!doctype html>
 <html>
   <head>
     <title>Serverless Job Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   </head>
   <body>
-    <p>Last Updated: ${currentTime.toTimeString()}</p>
-    ${jobLinks}
+    <div class="container">
+      <h1 class="text-center">Serverless Job Search</h1>
+      <p class="text-center">Last Updated: ${currentTime.toTimeString()}</p>
+      ${jobLinks}
+    </div>
   </body>
 </html>
 `
