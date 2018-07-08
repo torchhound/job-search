@@ -1,9 +1,9 @@
-let arc = require('@architect/functions')
-let nodemailer = require('nodemailer')
-let AWS = require('aws-sdk')
+const arc = require('@architect/functions')
+const nodemailer = require('nodemailer')
+const AWS = require('aws-sdk')
 
 function handler(event, callback) {
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: process.env.EMAIL,
@@ -11,9 +11,9 @@ function handler(event, callback) {
     }
   });
 
-  let s3 = new AWS.S3()
+  const s3 = new AWS.S3()
 
-  let getParams = {
+  const getParams = {
     Bucket: 'production-job-search-html',
     Key: 'index.html'
   }
@@ -23,7 +23,7 @@ function handler(event, callback) {
       console.log(err)
       callback()
     } else {
-      let mailOptions = {
+      const mailOptions = {
         from: process.env.EMAIL,
         to: process.env.EMAIL,
         subject: `Updated Job Search!`,

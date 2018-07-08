@@ -1,17 +1,17 @@
-let arc = require('@architect/functions')
-let indeed = require('indeed-scraper')
-let AWS = require('aws-sdk')
+const arc = require('@architect/functions')
+const indeed = require('indeed-scraper')
+const AWS = require('aws-sdk')
 
 function handler(event, callback) {
-  let s3 = new AWS.S3()
+  const s3 = new AWS.S3()
 
   const queryOptions = {
     query: 'Haskell',
-    jobType: 'fulltime',
+    jobType: 'contract',
     maxAge: '30',
     sort: 'date',
     limit: '1000'
-  };
+  }
 
   let jobLinks = ""
   let lengthCheck = 0
@@ -32,7 +32,7 @@ function handler(event, callback) {
 
   function uploadHtml() {
       const currentTime = new Date()
-      let html = `<!doctype html>
+      const html = `<!doctype html>
 <html>
   <head>
     <title>Serverless Job Search</title>
