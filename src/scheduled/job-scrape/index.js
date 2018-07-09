@@ -2,6 +2,8 @@ const arc = require('@architect/functions')
 const indeed = require('indeed-scraper')
 const AWS = require('aws-sdk')
 
+const bucket = require('@architect/shared/bucket')
+
 function handler(event, callback) {
   const s3 = new AWS.S3()
 
@@ -31,8 +33,8 @@ function handler(event, callback) {
   })
 
   function uploadHtml() {
-      const currentTime = new Date()
-      const html = `<!doctype html>
+    const currentTime = new Date()
+    const html = `<!doctype html>
 <html>
   <head>
     <title>Serverless Job Search</title>
@@ -49,7 +51,7 @@ function handler(event, callback) {
 `
 
     s3.putObject({
-      Bucket: 'production-job-search-html',
+      Bucket: bucket(process.env.NODE_ENV),
       Key: 'index.html',
       Body: html,
       ContentType: 'text/html',
