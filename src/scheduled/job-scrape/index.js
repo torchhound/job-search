@@ -12,20 +12,19 @@ function handler(event, callback) {
     jobType: 'contract',
     maxAge: '30',
     sort: 'date',
-    limit: '1000'
+    limit: '100'
   }
 
   let jobLinks = ""
-  let lengthCheck = 0
 
   indeed.query(queryOptions).then(res => {
     if (res === undefined || res.length == 0) {
       jobLinks += 'Empty Indeed Search'
+      uploadHtml()
     } else {
-      res.forEach(function(job) {
-        lengthCheck++
+      res.forEach(function(job, index) {
         jobLinks += `<div class="alert alert-primary show"><a href=${job.url}>${job.title}</a><p>${job.company} | ${job.location}</p></div>\n`
-        if (lengthCheck === res.length) {
+        if (index + 1 === res.length) {
           uploadHtml()
         }
       })
